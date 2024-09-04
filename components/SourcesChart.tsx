@@ -39,6 +39,10 @@ export default function SourcesChart({ data }: SourcesChartProps) {
             item.color = colors.pop() || undefined;
             item.percent = percentage.toFixed(1) + '%';
             item.labelLeft = accumulatedPercentage > 50;
+            // not working
+            item.onPress=(item: pieDataItem, index: number) => console.log(item.value.toString() ) ;
+            item.onLabelPress=(item: pieDataItem, index: number) => console.log(item.value.toString() ) ;
+            // *************
             if (!gotFocused && item.value === Math.max(...data.map(item => item.value))) {
                 gotFocused = true;
                 // item.focused = true;
@@ -81,9 +85,11 @@ export default function SourcesChart({ data }: SourcesChartProps) {
                 donut
                 radius={90}
                 innerRadius={60}
-                // focusOnPress
-                // toggleFocusOnPress={false}
-                // onPress={(item: pieDataItem) => { item.focused = !item.focused; console.log(item) }}
+                // Not working either
+                focusOnPress
+                onPress={ (item: pieDataItem, index: number) => console.log(item.value.toString() ) }
+                onLabelPress={ (item: pieDataItem, index: number) => console.log(item.value.toString() ) }
+                // *************                
                 centerLabelComponent={() => (
                     <View style={{ justifyContent: 'center', alignItems: 'center' }}>
                         <Text
