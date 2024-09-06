@@ -64,7 +64,7 @@ export default function SourcesChart({ data }: SourcesChartProps) {
                 externalLabelComponent={(item) => {
                     const itm = item as PieSection;
                     const shiftX = itm.labelLeft ? 90 : -40;
-                    return <G>
+                    return <G onResponderGrant={(evt) => console.log('evt', evt)}>
                         <Rect
                             x={itm.labelLeft ? shiftX : shiftX - 5}
                             y={-15}
